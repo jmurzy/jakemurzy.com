@@ -166,7 +166,7 @@ function TravelNotice() {
 					</p>
 					<p>
 						<u>Winter 2027:</u> Beijing 🇨🇳, Chongqing 🇨🇳, Chengdu 🇨🇳, Hong Kong
-						🇭🇰, Seoul 🇰🇷, Tokyo 🇯🇵
+						🇭🇰, Seoul 🇰🇷, Tokyo 🇯🇵, Bangkok 🇹🇭, Phuket 🇹🇭
 					</p>
 					<p>Let me know if our paths might cross!</p>
 					<Strip />
