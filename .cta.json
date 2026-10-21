@@ -5,7 +5,7 @@
   "typescript": true,
   "packageManager": "npm",
   "includeExamples": false,
-  "tailwind": true,
+  "tailwind": false,
   "projectPreset": "default",
   "routerOnly": false,
   "addOnOptions": {},
