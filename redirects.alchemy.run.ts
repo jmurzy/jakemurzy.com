@@ -51,13 +51,6 @@ const redirects = (zone: Cloudflare.Zone.Zone) =>
 
 const records = (zone: Cloudflare.Zone.Zone) =>
 	Effect.gen(function* () {
-		yield* Cloudflare.DNS.Record("JakeMurzyApex", {
-			zoneId: zone.zoneId,
-			name: ROOT_ZONE_NAME,
-			type: "A",
-			content: "192.0.2.1",
-			proxied: true,
-		}).pipe(adopt(true));
 		yield* Cloudflare.DNS.Record("JakeMurzyWww", {
 			zoneId: zone.zoneId,
 			name: `www.${ROOT_ZONE_NAME}`,

@@ -1,4 +1,17 @@
 
+:root {
+	--jmurzy-bg: #000;
+	--jmurzy-fg: #f9f9f9;
+	--jmurzy-fg-bright: #fafafa;
+	--jmurzy-accent: #ffbb37;
+	--jmurzy-muted: #313131;
+	--jmurzy-surface: #fff;
+	--jmurzy-surface-hover: #f0f0f0;
+	--jmurzy-footer-fg: #676767;
+	--jmurzy-notice-upcoming: #f00;
+	--jmurzy-notice-recent: #808080;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -11,5 +24,7 @@ body,
 
 body {
   margin: 0;
+	background: var(--jmurzy-bg);
+	color: var(--jmurzy-fg);
+  font-family: "Roboto Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-

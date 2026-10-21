@@ -1,0 +1,241 @@
+.container {
+	display: flex;
+	flex-direction: row;
+}
+
+.pane {
+	position: relative;
+	display: flex;
+	box-sizing: border-box;
+	max-width: 540px;
+	padding: 24px;
+	flex-direction: column;
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: -1.8px;
+}
+
+.illustrationPane {
+	position: relative;
+	display: none;
+	overflow: hidden;
+	box-sizing: border-box;
+	flex: 1;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.illustrationContainer {
+	position: fixed;
+	width: 460px;
+	margin-top: 120px;
+}
+
+.nav,
+.notice {
+	position: relative;
+	display: flex;
+	box-sizing: border-box;
+	max-width: 500px;
+	padding: 8px;
+	margin-bottom: 32px;
+	flex-direction: column;
+}
+
+.nav ol {
+	padding: 0;
+	margin: 0;
+}
+
+.nav li {
+	float: left;
+	padding-right: 8px;
+	line-height: 32px;
+	list-style: none;
+}
+
+.nav a {
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	color: var(--jmurzy-fg-bright);
+	font-family: inherit;
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: -1.8px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.nav a:visited {
+	color: var(--jmurzy-fg-bright);
+}
+
+.notice a,
+.notice a:visited {
+	color: var(--jmurzy-accent);
+}
+
+.notice {
+	color: var(--jmurzy-accent);
+}
+
+.noticeHeading {
+	padding-bottom: 16px;
+}
+
+.strip {
+	position: absolute;
+	top: 8px;
+	left: -9px;
+	box-sizing: border-box;
+	width: 6px;
+	height: calc(100% - 16px);
+	border-radius: 6px;
+	background-color: var(--jmurzy-strip-color, var(--jmurzy-accent));
+}
+
+.strip[data-dark="true"] {
+	background-color: var(--jmurzy-muted);
+}
+
+.section {
+	position: relative;
+	max-width: 500px;
+}
+
+.sectionContent {
+	position: relative;
+	color: var(--jmurzy-fg);
+	isolation: isolate;
+}
+
+.sectionContent[data-dimmed="true"] {
+	color: var(--jmurzy-muted);
+}
+
+.sectionContent[data-selected="true"] {
+	color: var(--jmurzy-bg);
+}
+
+.sectionContent::after,
+.sectionContent::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	border-radius: 8px;
+	content: "";
+	transition: background-color 0.1s ease-in;
+}
+
+.sectionContent[data-selected="true"]::after {
+	background-color: var(--jmurzy-surface);
+	transform: rotate(0deg);
+}
+
+.sectionContent[data-selected="true"][data-rotate="-1deg"]::after {
+	transform: rotate(-1deg);
+}
+
+.sectionContent[data-selected="true"][data-rotate="-1.5deg"]::after {
+	transform: rotate(-1.5deg);
+}
+
+.sectionContent[data-selected="true"][data-rotate="0.9deg"]::after {
+	transform: rotate(0.9deg);
+}
+
+.sectionContent[data-selected="true"][data-rotate="1deg"]::after {
+	transform: rotate(1deg);
+}
+
+.sectionContent[data-selected="true"][data-rotate=".5deg"]::after {
+	transform: rotate(0.5deg);
+}
+
+.sectionContent[data-selected="true"][data-rotate="1.5deg"]::after {
+	transform: rotate(1.5deg);
+}
+
+.sectionContent[data-selected="true"]::before {
+	background-color: var(--jmurzy-accent);
+	transform: rotate(2deg);
+}
+
+.sectionContent[data-selected="true"]:hover::after {
+	background-color: var(--jmurzy-surface-hover);
+}
+
+.sectionContent a,
+.sectionContent a:visited {
+	color: var(--jmurzy-accent);
+	text-decoration: underline;
+}
+
+.sectionContent[data-dimmed="true"] a,
+.sectionContent[data-dimmed="true"] a:visited {
+	color: var(--jmurzy-muted);
+}
+
+.hardLink {
+	position: absolute;
+	top: 0;
+	left: -18px;
+	display: none;
+	box-sizing: border-box;
+	width: 18px;
+	height: 100%;
+	padding-top: 12px;
+}
+
+.hardLink a,
+.hardLink a:visited {
+	color: var(--jmurzy-fg-bright);
+	font-family: inherit;
+	font-size: 18px;
+	font-weight: 400;
+	text-decoration: none;
+}
+
+.text {
+	padding: 8px;
+	margin: 0;
+}
+
+.copyright {
+	padding: 128px 8px 8px;
+	color: var(--jmurzy-footer-fg);
+	font-size: 14px;
+}
+
+@media (hover: hover) {
+	.section:hover > .hardLink {
+		display: block;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.pane {
+		padding: 48px 0 48px 48px;
+	}
+
+	.illustrationPane {
+		display: flex;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.illustrationContainer {
+		width: 680px;
+		margin-top: 180px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.illustrationContainer {
+		width: 840px;
+	}
+}

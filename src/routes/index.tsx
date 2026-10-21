@@ -1,7 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/")({ component: Home });
+import Home from "../components/Home/Home";
+import { getRootTitle } from "../lib/getRootTitle";
 
-function Home() {
-	return <h1>jakemurzy.com</h1>;
-}
+export const Route = createFileRoute("/")({
+	head: ({ matches }) => {
+		const rootTitle = getRootTitle(matches);
+
+		return {
+			meta: [{ title: `Jake Murzy — ${rootTitle}` }],
+		};
+	},
+	validateSearch: (search: Record<string, unknown>) => ({
+		s: typeof search.s === "string" ? search.s : undefined,
+	}),
+	component: Home,
+});

@@ -1,0 +1,156 @@
+.illustration {
+	width: 100%;
+}
+
+.illustration :global(#bubble-one) {
+	opacity: 0;
+	animation: popup 0.5s linear 2s forwards;
+}
+
+.illustration :global(#bubble-two) {
+	opacity: 0;
+	animation: popup 0.5s linear 3s forwards;
+}
+
+.illustration :global(#bubble-three) {
+	opacity: 0;
+	animation: popup 0.5s linear 4s forwards;
+}
+
+.illustration :global(#hot-air-balloon) {
+	animation: drift 3.5s ease-in-out infinite;
+}
+
+.noticeQuote {
+	padding: 0 0 16px;
+	margin: 0;
+	font-style: italic;
+	font-weight: 300;
+}
+
+.travelNotice {
+	margin-bottom: 0;
+}
+
+.travelNoticeDisclosure {
+	--travel-notice-fade-color: var(--jmurzy-bg);
+
+	position: relative;
+}
+
+.travelNotices {
+	position: relative;
+	overflow: hidden;
+	max-height: 200px;
+	padding-left: 12px;
+	margin-left: -12px;
+	transition: max-height 1s ease-in-out;
+}
+
+.travelNotices::after {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background: linear-gradient(
+		to bottom,
+		transparent 20%,
+		var(--travel-notice-fade-color) 100%
+	);
+	content: "";
+	pointer-events: none;
+}
+
+[data-selected="true"] .travelNoticeDisclosure {
+	--travel-notice-fade-color: var(--jmurzy-surface);
+}
+
+[data-selected="true"]:hover .travelNoticeDisclosure {
+	--travel-notice-fade-color: var(--jmurzy-surface-hover);
+}
+
+.travelNoticeDisclosure[data-expanded="true"] .travelNotices {
+	max-height: 1600px;
+}
+
+.travelNoticeDisclosure[data-expanded="true"] .travelNotices::after {
+	display: none;
+}
+
+.travelNoticeToggle {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	display: flex;
+	padding: 8px;
+	border: 0;
+	align-items: flex-end;
+	justify-content: flex-start;
+	background: transparent;
+	color: var(--jmurzy-accent);
+	font: inherit;
+	font-size: 12px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.travelNoticeDisclosure[data-expanded="true"] .travelNoticeToggle {
+	position: relative;
+	width: 100%;
+}
+
+.travelNotice[data-kind="upcoming"] {
+	--jmurzy-strip-color: var(--jmurzy-notice-upcoming);
+
+	color: var(--jmurzy-notice-upcoming);
+}
+
+.travelNotice[data-kind="recent"] {
+	--jmurzy-strip-color: var(--jmurzy-notice-recent);
+
+	color: var(--jmurzy-notice-recent);
+}
+
+.travelNotice > span {
+	z-index: 2;
+}
+
+.travelNoticeHeading {
+	margin: 0 0 16px;
+	font-size: inherit;
+	font-weight: 400;
+}
+
+.travelNotice p {
+	margin: 0 0 16px;
+}
+
+.travelNotice p:last-of-type {
+	margin-bottom: 0;
+}
+
+@keyframes drift {
+	0%,
+	100% {
+		transform: translateY(0) rotate(0);
+	}
+
+	50% {
+		transform: translateY(-30px) rotate(-1deg);
+	}
+}
+
+@keyframes popup {
+	from {
+		opacity: 0.5;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.travelNotices {
+		transition: none;
+	}
+}
