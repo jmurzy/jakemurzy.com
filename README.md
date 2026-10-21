@@ -20,6 +20,8 @@ Configure these credentials as GitHub Actions repository secrets:
 - `CLOUDFLARE_API_TOKEN`: a token restricted to that account, with only the permissions required to
   deploy the declared Worker resources. Review both production plans when infrastructure changes
   and narrow the token scope accordingly.
+- `HARDCOVER_API_TOKEN`: a read-only personal access token used by the Worker to load the Hardcover
+  library preview.
 
 Configure `JULIA_WEBSITE` as a GitHub Actions variable. It is public deployment configuration
 injected into runtime configuration.
@@ -37,7 +39,7 @@ just dev
 `just dev` runs the local Cloudflare Worker through Alchemy with Vite hot module replacement at
 `http://localhost:3000`. Vite generates `src/routeTree.gen.ts` during development and builds; run
 `just generate-routes` to refresh it manually. Local development reads `.env`; it must provide
-`JULIA_WEBSITE`.
+`JULIA_WEBSITE`. Add `HARDCOVER_API_TOKEN` to enable the library preview locally.
 
 ## Deployments
 

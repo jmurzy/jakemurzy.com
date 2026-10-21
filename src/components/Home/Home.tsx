@@ -1,6 +1,13 @@
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import {
+	Link,
+	useLoaderData,
+	useNavigate,
+	useSearch,
+} from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useVisits } from "../../hooks/useVisits";
+import type { HardcoverBook } from "../../server/hardcover";
+import HardcoverPreview from "../HardcoverPreview/HardcoverPreview";
 import {
 	Footer,
 	Section,
@@ -86,7 +93,7 @@ function Nav() {
 	);
 }
 
-function SocialNav() {
+function SocialNav({ books }: { books: HardcoverBook[] }) {
 	return (
 		<nav className={styles.nav}>
 			<ol>
@@ -120,6 +127,7 @@ function SocialNav() {
 					>
 						Hardcover
 					</a>
+					<HardcoverPreview books={books} />
 				</li>
 			</ol>
 			<Strip dark />
@@ -227,6 +235,7 @@ function TravelNotice() {
 }
 
 export default function Home() {
+	const { hardcoverBooks } = useLoaderData({ from: "/" });
 	const { s: section } = useSearch({ from: "/" });
 	const navigate = useNavigate({ from: "/" });
 	const resetUri = () =>
@@ -245,7 +254,7 @@ export default function Home() {
 			<div className={styles.pane}>
 				{visits && Object.keys(visits).length > 1 ? <VisitorNotice /> : null}
 
-				<SocialNav />
+				<SocialNav books={hardcoverBooks} />
 
 				<Nav />
 

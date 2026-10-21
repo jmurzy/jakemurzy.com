@@ -54,6 +54,7 @@ jobs:
       - name: Check
         env:
           JULIA_WEBSITE: "https://julia.dev"
+          HARDCOVER_API_TOKEN: "hc_pat_secret"
         run: just check
 
   deploy:
@@ -85,6 +86,7 @@ jobs:
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          HARDCOVER_API_TOKEN: ${{ secrets.HARDCOVER_API_TOKEN }}
           JULIA_WEBSITE: ${{ vars.JULIA_WEBSITE }}
         run: just deploy --yes
 

@@ -24,6 +24,7 @@ const webWorker = Effect.gen(function* () {
 			strictPort: true,
 		},
 		env: {
+			HARDCOVER_API_TOKEN: Config.Redacted("HARDCOVER_API_TOKEN"),
 			JULIA_WEBSITE: Config.String("JULIA_WEBSITE"),
 		},
 		domain: {
