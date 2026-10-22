@@ -59,12 +59,6 @@ function Nav() {
 					{", "}
 				</li>
 				<li>
-					<Link to="/" search={{ s: "writing" }} resetScroll={false}>
-						Writing
-					</Link>
-					{", "}
-				</li>
-				<li>
 					<Link to="/" search={{ s: "mentorship" }} resetScroll={false}>
 						Mentorship
 					</Link>
@@ -375,40 +369,12 @@ export default function Home() {
 						<p className={styles.text}>
 							I briefly dipped my toes into open source and wrote occasionally
 							<sup>
-								[<a href="/blog/implementing-foldview-in-react-native">1</a>
-								][
-								<a
-									href="https://commitocracy.com/introducing-react-router-native-b02e76b8ca5d"
-									target="_blank"
-									rel="noreferrer"
-								>
-									2
-								</a>
-								]
+								[<a href="/blog/implementing-foldview-in-react-native">1</a>][
+								<a href="/blog/introducing-react-router-native">2</a>]
 							</sup>
 							, mostly about UI architecture, interaction design, and the sharp
 							edges you only find by shipping. Founder life got in the way, and
 							I haven’t made as much time for either since.
-						</p>
-					</Section>
-
-					<Section
-						path="/"
-						id="writing"
-						rotate="-1.5deg"
-						dimmed={Boolean(section && section !== "writing")}
-						selected={section === "writing"}
-						onClickOutside={resetUri}
-					>
-						<p className={styles.text}>
-							My writing sometimes sounds academic because I like holding
-							multiple opposing ideas in my head at once. That tension is
-							usually the point. I’m not trying to sound clever. I’m trying to
-							get to something solid. Exploring competing perspectives is how I
-							pressure test ideas before committing to one. That habit has
-							turned out to be unexpectedly useful for context engineering with
-							LLMs. Better results often come from holding competing constraints
-							in view long enough to give the model a clearer problem.
 						</p>
 					</Section>
 
