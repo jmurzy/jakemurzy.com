@@ -90,7 +90,7 @@ jobs:
           JULIA_WEBSITE: ${{ vars.JULIA_WEBSITE }}
         run: just deploy --yes
 
-  deploy-redirects:
+  deploy-zone:
     needs: check
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -114,8 +114,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Deploy redirects
+      - name: Deploy zone
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: just deploy-redirects --yes
+        run: just deploy-zone --yes

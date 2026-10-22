@@ -51,13 +51,13 @@ deploy *args:
 plan *args:
     npm run plan -- {{ args }}
 
-[doc("Deploy the redirect stack. Extra arguments are forwarded to Alchemy.")]
-deploy-redirects *args:
-    npm run deploy:redirects -- {{ args }}
+[doc("Deploy the zone stack. Extra arguments are forwarded to Alchemy.")]
+deploy-zone *args:
+    npm run deploy:zone -- {{ args }}
 
-[doc("Preview redirect stack changes. Extra arguments are forwarded to Alchemy.")]
-plan-redirects *args:
-    npm run plan:redirects -- {{ args }}
+[doc("Preview zone stack changes. Extra arguments are forwarded to Alchemy.")]
+plan-zone *args:
+    npm run plan:zone -- {{ args }}
 
 # Vite generates routeTree.gen.ts during dev and builds; use this to refresh it manually.
 generate-routes:

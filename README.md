@@ -6,7 +6,8 @@ experience at `jakemurzy.com`.
 ## Web hosting
 
 `alchemy.run.ts` adopts the existing `jakemurzy.com` zone and manages the `jakemurzy-com` Worker.
-Review `just plan` and `just plan-redirects` before production deploys.
+`zone.alchemy.run.ts` manages zone-wide DNS, redirects, and Web Analytics.
+Review `just plan` and `just plan-zone` before production deploys.
 
 Alchemy's Vite resource builds and deploys the TanStack Start server bundle and client assets.
 Add future Cloudflare bindings and secrets to `alchemy.run.ts`.
@@ -48,12 +49,12 @@ credentials:
 
 ```sh
 just plan
-just plan-redirects
+just plan-zone
 just deploy
-just deploy-redirects
+just deploy-zone
 ```
 
 For local development, copy `.env.example` to `.env` and adjust its values as needed. The `.env`
 file is used by `alchemy dev`; it is ignored and must not be committed.
 
-The `Deploy Web` workflow deploys the site and the separate redirect stack.
+The `Deploy Web` workflow deploys the site and the separate zone stack.
