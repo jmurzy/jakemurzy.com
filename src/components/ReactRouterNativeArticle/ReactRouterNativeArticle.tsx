@@ -20,28 +20,31 @@ const originalUrl =
 	"https://medium.com/committer-engineering/introducing-react-router-native-b02e76b8ca5d";
 
 const monokai: PrismTheme = {
-	plain: { color: "#f8f8f2", background: "#000" },
+	plain: { color: "var(--jmurzy-code-fg)", background: "var(--jmurzy-bg)" },
 	styles: [
 		{
 			types: ["comment", "prolog", "doctype", "cdata"],
-			style: { color: "#75715e" },
+			style: { color: "var(--jmurzy-code-comment)" },
 		},
 		{
 			types: ["keyword", "operator", "tag", "deleted"],
-			style: { color: "#f92672" },
+			style: { color: "var(--jmurzy-code-keyword)" },
 		},
 		{
 			types: ["string", "char", "attr-value", "inserted"],
-			style: { color: "#e6db74" },
+			style: { color: "var(--jmurzy-code-string)" },
 		},
-		{ types: ["function", "class-name"], style: { color: "#a6e22e" } },
+		{
+			types: ["function", "class-name"],
+			style: { color: "var(--jmurzy-code-function)" },
+		},
 		{
 			types: ["number", "boolean", "constant", "symbol"],
-			style: { color: "#ae81ff" },
+			style: { color: "var(--jmurzy-code-number)" },
 		},
 		{
 			types: ["property", "variable", "builtin", "attr-name"],
-			style: { color: "#66d9ef" },
+			style: { color: "var(--jmurzy-code-variable)" },
 		},
 	],
 };

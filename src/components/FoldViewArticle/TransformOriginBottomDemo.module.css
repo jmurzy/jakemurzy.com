@@ -7,7 +7,7 @@
 }
 
 .base {
-	background: #fff;
+	background: var(--jmurzy-surface);
 	width: 300px;
 	height: 60px;
 	margin: 0;

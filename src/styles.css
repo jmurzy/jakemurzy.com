@@ -10,6 +10,20 @@
 	--jmurzy-footer-fg: #676767;
 	--jmurzy-notice-upcoming: #f00;
 	--jmurzy-notice-recent: #808080;
+	--jmurzy-article-byline: #bfbfbf;
+	--jmurzy-article-heading-secondary-selected: #735419;
+	--jmurzy-article-heading-secondary: #fdd17b;
+	--jmurzy-article-heading-selected: #145c57;
+	--jmurzy-article-heading: #80cbc4;
+	--jmurzy-code-comment: #75715e;
+	--jmurzy-code-fg: #f8f8f2;
+	--jmurzy-code-function: #a6e22e;
+	--jmurzy-code-keyword: #f92672;
+	--jmurzy-code-number: #ae81ff;
+	--jmurzy-code-string: #e6db74;
+	--jmurzy-code-variable: #66d9ef;
+	--jmurzy-tweet-bg-hover: #0d0d0d;
+	--jmurzy-tweet-secondary: #71767b;
 }
 
 * {

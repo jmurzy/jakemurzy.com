@@ -31,24 +31,24 @@
 
 .article h2 {
 	padding-top: 36px;
-	color: color-mix(in srgb, var(--jmurzy-accent) 65%, var(--jmurzy-fg-bright));
+	color: var(--jmurzy-article-heading-secondary);
 	font-size: 24px;
 	line-height: 1.3;
 }
 
 .article :global([data-selected="true"]) h2 {
-	color: color-mix(in srgb, var(--jmurzy-accent) 45%, var(--jmurzy-bg));
+	color: var(--jmurzy-article-heading-secondary-selected);
 }
 
 .article h3 {
 	padding-top: 24px;
-	color: #80cbc4;
+	color: var(--jmurzy-article-heading);
 	font-size: 20px;
 	line-height: 1.35;
 }
 
 .article :global([data-selected="true"]) h3 {
-	color: #145c57;
+	color: var(--jmurzy-article-heading-selected);
 }
 
 .article .title {
@@ -70,7 +70,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0 8px;
-	color: color-mix(in srgb, var(--jmurzy-fg) 60%, var(--jmurzy-footer-fg));
+	color: var(--jmurzy-article-byline);
 	font-size: 14px;
 	letter-spacing: -1px;
 }
@@ -116,10 +116,10 @@
 	margin: 0 auto;
 	--tweet-body-font-size: 1rem;
 	--tweet-header-font-size: 0.875rem;
-	--tweet-bg-color: #000;
-	--tweet-bg-color-hover: #0d0d0d;
-	--tweet-font-color-secondary: #71767b;
-	--tweet-color-blue-secondary: #71767b;
+	--tweet-bg-color: var(--jmurzy-bg);
+	--tweet-bg-color-hover: var(--jmurzy-tweet-bg-hover);
+	--tweet-font-color-secondary: var(--jmurzy-tweet-secondary);
+	--tweet-color-blue-secondary: var(--jmurzy-tweet-secondary);
 }
 
 .article img:not(:where(:global(.react-tweet-theme) *)) {
@@ -173,7 +173,7 @@
 }
 
 .diagramAxes {
-	color: #000;
+	color: var(--jmurzy-bg);
 }
 
 .diagramHeight {
