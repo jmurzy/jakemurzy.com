@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import type { HardcoverBook } from "../../server/hardcover";
 import styles from "./HardcoverPreview.module.css";
 
@@ -6,6 +8,8 @@ export interface HardcoverPreviewProps {
 }
 
 export default function HardcoverPreview({ books }: HardcoverPreviewProps) {
+	const [hoveredTitle, setHoveredTitle] = useState<string | null>(null);
+
 	if (books.length === 0) {
 		return null;
 	}
@@ -16,8 +20,18 @@ export default function HardcoverPreview({ books }: HardcoverPreviewProps) {
 	).flat();
 
 	return (
-		<section className={styles.preview} aria-label="On my bookshelf">
-			<div className={styles.heading}>On my bookshelf</div>
+		<section
+			className={styles.preview}
+			aria-label="On my bookshelf"
+			onMouseEnter={() => setHoveredTitle(null)}
+			onMouseLeave={() => setHoveredTitle(null)}
+		>
+			<div className={styles.heading}>
+				<div>On my bookshelf</div>
+				{hoveredTitle ? (
+					<span className={styles.hoveredBookTitle}>{hoveredTitle}</span>
+				) : null}
+			</div>
 			<div className={styles.viewport}>
 				<div className={styles.track}>
 					{[0, 1].map((copy) => (
@@ -29,6 +43,11 @@ export default function HardcoverPreview({ books }: HardcoverPreviewProps) {
 									key={`${copy}-${key}`}
 									rel="noreferrer"
 									target="_blank"
+									aria-label={book.title}
+									onMouseEnter={() => setHoveredTitle(book.title)}
+									onMouseLeave={() => setHoveredTitle(null)}
+									onFocus={() => setHoveredTitle(book.title)}
+									onBlur={() => setHoveredTitle(null)}
 								>
 									{book.imageUrl ? (
 										<img
@@ -42,7 +61,6 @@ export default function HardcoverPreview({ books }: HardcoverPreviewProps) {
 											{book.title.slice(0, 1)}
 										</div>
 									)}
-									<div className={styles.bookTitle}>{book.title}</div>
 								</a>
 							))}
 						</div>
