@@ -15,8 +15,8 @@ import {
 	scrollToId,
 	styles,
 } from "../PageLayout/PageLayout";
+import AsciiIllustration from "./AsciiIllustration";
 import homeStyles from "./Home.module.css";
-import SiteIllustration from "./Illustration";
 
 function Nav() {
 	return (
@@ -621,7 +621,13 @@ export default function Home() {
 			</div>
 			<div className={styles.illustrationPane}>
 				<div className={styles.illustrationContainer}>
-					<SiteIllustration className={homeStyles.illustration} />
+					<AsciiIllustration
+						className={homeStyles.illustration}
+						cellSize={8}
+						rotationIntensity={0.5}
+						floatIntensity={0.35}
+						floatSpeed={1}
+					/>
 				</div>
 			</div>
 		</div>

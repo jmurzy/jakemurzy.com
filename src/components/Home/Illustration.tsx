@@ -1,8 +1,11 @@
-import type { SVGProps } from "react";
+import type { Ref, SVGProps } from "react";
 
-function Illustration(props: SVGProps<SVGSVGElement>) {
+function Illustration({
+	ref,
+	...props
+}: SVGProps<SVGSVGElement> & { ref?: Ref<SVGSVGElement> }) {
 	return (
-		<svg fill="none" viewBox="0 0 1214 846" {...props}>
+		<svg ref={ref} fill="none" viewBox="0 0 1214 846" {...props}>
 			<title>Isometric illustration of a creative workspace</title>
 			<path
 				d="M1063.06 442.126c9.95 5.748 9.95 15.067 0 20.815L454.565 814.38c-9.952 5.748-26.089 5.748-36.042 0L8.303 577.481c-9.953-5.748-9.954-15.067-.002-20.815l608.495-351.439c9.952-5.747 26.089-5.747 36.042 0l410.222 236.899z"
