@@ -59,9 +59,10 @@ async function rasterize(
 
 /**
  * The site illustration drawn in the browser as ASCII characters. The
- * three.js stage is kept out of the initial bundle and only built the first
- * time the artwork is hovered. Between hovers the plain SVG is shown and the
- * renderer is paused, so nothing runs unless someone points at it.
+ * three.js stage is kept out of the initial bundle but is built as soon as
+ * the component mounts, so the ASCII artwork is the default view. Hovering
+ * reveals the plain SVG and pauses the renderer, so it only animates while
+ * someone is looking at it.
  */
 export default function AsciiIllustration({
 	className,
@@ -109,9 +110,9 @@ export default function AsciiIllustration({
 			starting = false;
 			if (!stage) return;
 
-			// A hover that ended while the stage was building should not leave
-			// it rendering behind the plain illustration.
-			if (!hoveredRef.current) stage.pause();
+			// A hover that started while the stage was building should not
+			// leave it rendering behind the plain SVG.
+			if (hoveredRef.current) stage.pause();
 			stageRef.current = stage;
 			setReady(true);
 		};
@@ -126,10 +127,11 @@ export default function AsciiIllustration({
 		};
 	}, []);
 
-	// Rendering is tied to the pointer being over the artwork: the stage is
-	// built on the first hover and paused again as soon as the pointer leaves.
+	// Rendering is tied to the pointer being over the artwork: the ASCII
+	// stage runs by default and is paused as soon as the pointer hovers the
+	// SVG, which it reveals in the stage's place.
 	useEffect(() => {
-		if (hovered) {
+		if (!hovered) {
 			startRef.current?.();
 			stageRef.current?.resume();
 		} else {
@@ -141,7 +143,7 @@ export default function AsciiIllustration({
 		stageRef.current?.update(options);
 	});
 
-	const showAscii = ready && hovered;
+	const showAscii = ready && !hovered;
 
 	return (
 		<div
