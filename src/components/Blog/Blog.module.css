@@ -1,0 +1,51 @@
+.container {
+	width: 100%;
+	overflow-x: clip;
+}
+
+.pane {
+	width: 100%;
+	min-width: 0;
+}
+
+.list {
+	max-width: 500px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.item {
+	padding: 8px;
+}
+
+.link {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	text-decoration: none;
+}
+
+.date {
+	color: var(--jmurzy-footer-fg);
+	font-size: 14px;
+	letter-spacing: -1px;
+}
+
+.title {
+	color: var(--jmurzy-accent);
+	font-size: 18px;
+}
+
+.link:hover .title {
+	text-decoration: underline;
+}
+
+@media screen and (min-width: 480px) {
+	.link {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0 16px;
+	}
+}

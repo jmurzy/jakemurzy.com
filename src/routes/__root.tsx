@@ -2,6 +2,7 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
+import PageNotFound from "../components/NotFound/PageNotFound";
 import appCss from "../styles.css?url";
 
 const SITE_DESCRIPTION =
@@ -23,6 +24,7 @@ const jsonLd = {
 				"https://x.com/jmurzy",
 				"https://github.com/jmurzy",
 				"https://linkedin.com/in/jmurzy",
+				"https://medium.com/@jmurzy",
 			],
 		},
 		{
@@ -35,42 +37,11 @@ const jsonLd = {
 				"@id": `${SITE_URL}/#person`,
 			},
 		},
-		{
-			"@type": "TechArticle",
-			"@id":
-				"https://commitocracy.com/implementing-foldview-in-react-native-e970011f98b8",
-			url: "https://commitocracy.com/implementing-foldview-in-react-native-e970011f98b8",
-			headline: "Implementing FoldView in React Native",
-			datePublished: "2016-11-11",
-			author: {
-				"@id": `${SITE_URL}/#person`,
-			},
-			publisher: {
-				"@type": "Organization",
-				name: "Committer Engineering",
-				url: "https://commitocracy.com",
-			},
-		},
-		{
-			"@type": "TechArticle",
-			"@id":
-				"https://commitocracy.com/introducing-react-router-native-b02e76b8ca5d",
-			url: "https://commitocracy.com/introducing-react-router-native-b02e76b8ca5d",
-			headline: "Introducing React Router Native",
-			datePublished: "2016-09-12",
-			author: {
-				"@id": `${SITE_URL}/#person`,
-			},
-			publisher: {
-				"@type": "Organization",
-				name: "Committer Engineering",
-				url: "https://commitocracy.com",
-			},
-		},
 	],
 };
 
 export const Route = createRootRoute({
+	notFoundComponent: PageNotFound,
 	head: () => ({
 		meta: [
 			{

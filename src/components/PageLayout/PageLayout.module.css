@@ -169,14 +169,16 @@
 	background-color: var(--jmurzy-surface-hover);
 }
 
-.sectionContent a,
-.sectionContent a:visited {
+.sectionContent a:not(:where(:global(.react-tweet-theme) *)),
+.sectionContent a:visited:not(:where(:global(.react-tweet-theme) *)) {
 	color: var(--jmurzy-accent);
 	text-decoration: underline;
 }
 
-.sectionContent[data-dimmed="true"] a,
-.sectionContent[data-dimmed="true"] a:visited {
+.sectionContent[data-dimmed="true"]
+	a:not(:where(:global(.react-tweet-theme) *)),
+.sectionContent[data-dimmed="true"]
+	a:visited:not(:where(:global(.react-tweet-theme) *)) {
 	color: var(--jmurzy-muted);
 }
 

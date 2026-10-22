@@ -128,6 +128,10 @@ function SocialNav({ books }: { books: HardcoverBook[] }) {
 						Hardcover
 					</a>
 					<HardcoverPreview books={books} />
+					{", "}
+				</li>
+				<li>
+					<Link to="/blog">Blog</Link>
 				</li>
 			</ol>
 			<Strip dark />
@@ -371,14 +375,7 @@ export default function Home() {
 						<p className={styles.text}>
 							I briefly dipped my toes into open source and wrote occasionally
 							<sup>
-								[
-								<a
-									href="https://commitocracy.com/implementing-foldview-in-react-native-e970011f98b8"
-									target="_blank"
-									rel="noreferrer"
-								>
-									1
-								</a>
+								[<a href="/blog/implementing-foldview-in-react-native">1</a>
 								][
 								<a
 									href="https://commitocracy.com/introducing-react-router-native-b02e76b8ca5d"

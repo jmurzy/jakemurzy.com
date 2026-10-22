@@ -1,0 +1,9 @@
+.container {
+	width: 100%;
+	overflow-x: clip;
+}
+
+.pane {
+	width: 100%;
+	min-width: 0;
+}

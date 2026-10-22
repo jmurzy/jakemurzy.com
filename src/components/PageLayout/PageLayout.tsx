@@ -10,7 +10,8 @@ type SectionProps = {
 	id: string;
 	noLink?: boolean;
 	onClickOutside: () => void;
-	path: "/" | "/cofounder";
+	path: "/" | "/cofounder" | "/blog/$slug";
+	params?: { slug: string };
 	rotate?: string;
 	selected?: boolean;
 };
@@ -55,6 +56,7 @@ export function Section({
 	noLink = false,
 	onClickOutside,
 	path,
+	params,
 	rotate = "0deg",
 	selected = false,
 }: SectionProps) {
@@ -77,14 +79,26 @@ export function Section({
 			</div>
 			{noLink ? null : (
 				<div className={styles.hardLink}>
-					<Link
-						aria-label={`Link to ${id}`}
-						resetScroll={false}
-						search={{ s: id }}
-						to={path}
-					>
-						<LinkIcon />
-					</Link>
+					{path === "/blog/$slug" && params ? (
+						<Link
+							aria-label={`Link to ${id}`}
+							params={params}
+							resetScroll={false}
+							search={{ s: id }}
+							to={path}
+						>
+							<LinkIcon />
+						</Link>
+					) : path === "/" || path === "/cofounder" ? (
+						<Link
+							aria-label={`Link to ${id}`}
+							resetScroll={false}
+							search={{ s: id }}
+							to={path}
+						>
+							<LinkIcon />
+						</Link>
+					) : null}
 				</div>
 			)}
 		</div>
