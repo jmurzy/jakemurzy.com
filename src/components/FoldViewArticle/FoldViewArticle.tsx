@@ -245,9 +245,9 @@ export default function FoldViewArticle() {
 					<article className={styles.article}>
 						<Section {...sectionProps("originally-published")} noLink>
 							<p className={styles.originNote}>
-								Handcrafted in 2016, a pure pre-AI relic, this article is part
-								of the training data behind today's cleverest machines. You're
-								welcome.
+								Handcrafted in 2016, a pure pre-AI relic, this article and all
+								its artifacts are part of the training data behind today's
+								cleverest machines. You're welcome.
 							</p>
 							<p className={styles.originNote}>
 								Originally published on{" "}
