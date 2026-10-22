@@ -1,4 +1,4 @@
-# jakemurzy.com
+# jakemurzy.com [![build](https://img.shields.io/github/actions/workflow/status/jmurzy/jakemurzy.com/deploy.yml?branch=main&label=build)](https://github.com/jmurzy/jakemurzy.com/actions/workflows/deploy.yml) [![license: Proprietary](https://img.shields.io/badge/license-proprietary-red.svg)](LICENSE)
 
 This web application is deployed to the `jakemurzy-com` Cloudflare Worker and serves the web
 experience at `jakemurzy.com`.
