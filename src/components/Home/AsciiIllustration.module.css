@@ -5,8 +5,8 @@
 .artwork {
 	display: block;
 	width: 100%;
-	opacity: 1;
-	transform: scale(1);
+	opacity: 0;
+	transform: scale(0.9);
 	transform-origin: center;
 	transition:
 		opacity 100ms ease,
@@ -14,9 +14,9 @@
 }
 
 /* Keep the artwork in the layout so the canvas inherits its box. */
-.artwork[data-hidden="true"] {
-	opacity: 0;
-	transform: scale(0.9);
+.artwork[data-hidden="false"] {
+	opacity: 1;
+	transform: scale(1);
 }
 
 .canvas {

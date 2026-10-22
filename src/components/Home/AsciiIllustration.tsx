@@ -60,9 +60,9 @@ async function rasterize(
 /**
  * The site illustration drawn in the browser as ASCII characters. The
  * three.js stage is kept out of the initial bundle but is built as soon as
- * the component mounts, so the ASCII artwork is the default view. Hovering
- * reveals the plain SVG and pauses the renderer, so it only animates while
- * someone is looking at it.
+ * the component mounts, so the ASCII artwork is the default view. The plain
+ * SVG stays hidden until the stage is ready, so nothing flashes on load, and
+ * is revealed on hover, which also pauses the renderer.
  */
 export default function AsciiIllustration({
 	className,
@@ -78,6 +78,7 @@ export default function AsciiIllustration({
 	const latestOptions = useRef(options);
 	const [hovered, setHovered] = useState(false);
 	const [ready, setReady] = useState(false);
+	const [failed, setFailed] = useState(false);
 
 	latestOptions.current = options;
 
@@ -95,8 +96,14 @@ export default function AsciiIllustration({
 
 			starting = true;
 			const source = await rasterize(svg);
-			if (!source || cancelled) {
+			if (cancelled) {
 				starting = false;
+				return;
+			}
+			if (!source) {
+				starting = false;
+				// Fall back to the plain SVG so the artwork is never blank.
+				setFailed(true);
 				return;
 			}
 
@@ -108,7 +115,10 @@ export default function AsciiIllustration({
 
 			const stage = createAsciiStage(canvas, source, latestOptions.current);
 			starting = false;
-			if (!stage) return;
+			if (!stage) {
+				setFailed(true);
+				return;
+			}
 
 			// A hover that started while the stage was building should not
 			// leave it rendering behind the plain SVG.
@@ -143,6 +153,7 @@ export default function AsciiIllustration({
 		stageRef.current?.update(options);
 	});
 
+	const showArtwork = hovered || failed;
 	const showAscii = ready && !hovered;
 
 	return (
@@ -159,13 +170,13 @@ export default function AsciiIllustration({
 			ref={wrapperRef}
 		>
 			<Illustration
-				aria-hidden={showAscii}
+				aria-hidden={!showArtwork}
 				className={styles.artwork}
-				data-hidden={showAscii}
+				data-hidden={!showArtwork}
 				ref={svgRef}
 			/>
 			<canvas
-				aria-hidden={!showAscii}
+				aria-hidden={showArtwork}
 				aria-label={label}
 				className={styles.canvas}
 				data-ready={showAscii}
