@@ -33,7 +33,7 @@ const redirects = (zone: Cloudflare.Zone.Zone) =>
 			},
 			{
 				description:
-					"Permanently redirects HTTPS requests from www.jakmurzy.com to the canonical jakemurzy.com hostname.",
+					"Permanently redirects HTTPS requests from www.jakemurzy.com to the canonical jakemurzy.com hostname.",
 				expression: '(http.request.full_uri wildcard r"https://www.*")',
 				action: "redirect",
 				actionParameters: {
