@@ -1,0 +1,31 @@
+{
+	"name": "jakemurzy.com",
+	"image": "node:24.21.0-bookworm",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {},
+		"ghcr.io/devcontainers-extra/features/mise:1": {
+			"version": "2026.11.3"
+		}
+	},
+	"remoteUser": "node",
+	"remoteEnv": {
+		"PATH": "/home/node/.local/share/mise/shims:${containerEnv:PATH}"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": ["biomejs.biome", "nefrob.vscode-just-syntax", "github.vscode-github-actions", "redhat.vscode-yaml", "rvben.rumdl"]
+		}
+	},
+	"initializeCommand": "mkdir -p \"${localEnv:HOME}/.alchemy\"",
+	"mounts": [
+		"source=${devcontainerId}-node-modules,target=${containerWorkspaceFolder}/node_modules,type=volume,volume-nocopy",
+		"source=${localEnv:HOME}/.alchemy,target=/home/node/.alchemy,type=bind,readonly"
+	],
+	"forwardPorts": [3000],
+	"portsAttributes": {
+		"3000": {
+			"label": "Development server"
+		}
+	},
+	"postCreateCommand": "sudo chown node:node node_modules && mise install && mise exec -- just install && if [ ! -d \"$HOME/.alchemy/profiles/personal\" ]; then printf '\\nAlchemy profile personal not found. On the host, run:\\n  npx alchemy profile create personal\\n  npx alchemy profile edit --profile personal --add Cloudflare\\n'; fi"
+}

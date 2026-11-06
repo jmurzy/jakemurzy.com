@@ -1,15 +1,12 @@
-# GitHub Actions workflow linter (brew install actionlint).
+# GitHub Actions workflow linter.
 actionlint_bin := env_var_or_default("ACTIONLINT_BIN", "actionlint")
+# Markdown linter.
+rumdl_bin := env_var_or_default("RUMDL_BIN", "rumdl")
 
 [default]
 [doc("List available development commands.")]
 help:
     @just --list
-
-[doc("One-time developer setup: Homebrew bundle and git hooks for just check.")]
-prepare:
-    brew bundle
-    pre-commit install --hook-type pre-commit
 
 [doc("Install locked Node.js dependencies.")]
 install:
@@ -33,6 +30,12 @@ lint-check:
 lint:
     npm run lint -- --fix
 
+markdownlint-check:
+    "{{ rumdl_bin }}" check .
+
+markdownlint:
+    "{{ rumdl_bin }}" check --fix .
+
 typecheck:
     npm run typecheck
 
@@ -41,7 +44,7 @@ actionlint-check:
     "{{ actionlint_bin }}"
 
 [doc("Run checks.")]
-check: format-check lint-check actionlint-check typecheck test
+check: format-check lint-check markdownlint-check actionlint-check typecheck test
 
 [doc("Deploy the Worker using the configured Cloudflare credentials. Extra arguments are forwarded to Alchemy.")]
 deploy *args:
