@@ -3,3 +3,6 @@ actionlint = "1.7.12"
 just = "1.59.0"
 pre-commit = "4.7.0"
 rumdl = "0.3.2"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
